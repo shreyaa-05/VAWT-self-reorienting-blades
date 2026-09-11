@@ -1,0 +1,74 @@
+
+VAWT SELF-REORIENTING BLADE -- DESIGN STUDY SUMMARY
+====================================================
+
+MODEL
+-----
+Aerodynamics : single-streamtube momentum theory (Templin, 1974) with a
+               Viterna-Corrigan-extrapolated NACA-0018-like polar
+               (cl_alpha=5.73, alpha_stall=12.0 deg,
+               cd0=0.01, cd_max=1.3).
+Rotor        : R=1.0 m, chord=0.15 m, 3 blades, span=1.5 m.
+Flow         : U_inf=8.0 m/s, rho=1.225 kg/m^3.
+Pitch physics: quasi-static torque balance between the aerodynamic moment
+               about the pitch pivot and a torsional spring, solved with a
+               stability- and history-aware continuation solver so that
+               genuinely bistable ("snap-through") pitch behaviour is
+               captured correctly rather than an unstable equilibrium.
+
+This is a fast engineering-level surrogate for design-space exploration --
+NOT a substitute for the CFD simulations and wind-tunnel testing described
+in the project brief. Its job is to cheaply narrow the hardware design
+space (pivot location, spring stiffness, preload, stop angle) before
+committing to expensive CFD / experimental campaigns on the most promising
+candidates.
+
+OPTIMIZED HARDWARE (design TSR = 2.0)
+-----------------------------------------------
+  Pivot location (x_pivot)      : 0.189  (fraction of chord from LE; x_ac = 0.25)
+  Spring stiffness (k_spring)   : 0.828
+  Preload (beta0)               : 0.60 deg
+  Mechanical stops              : +-8.83 deg
+  Cp at design TSR              : 0.3704
+  Optimization cost             : 351 rotor evaluations
+
+PERFORMANCE AT THE DESIGN POINT (TSR = 2.0)
+-------------------------------------------------------
+  Self-reorienting (optimized)  : Cp = 0.3703
+  Fixed pitch (baseline)        : Cp = 0.2932
+  Ideal motorized pitch (bound) : Cp = 0.4519
+
+  --> At its design point, the optimized passive mechanism recovers
+      approximately 49% of the fixed-pitch-to-ideal-motorized-pitch
+      performance gap, with no motor and no external power input.
+
+PERFORMANCE ACROSS THE FULL TSR SWEEP (1.00 - 3.50)
+-------------------------------------------------------
+  Self-reorienting (optimized)  : peak Cp = 0.4363  at TSR = 2.50
+  Fixed pitch (baseline)        : peak Cp = 0.4525  at TSR = 2.50
+  Ideal motorized pitch (bound) : peak Cp = 0.4925  at TSR = 3.50
+  Betz limit (reference)        : Cp = 0.5926
+
+  Honest caveat: this design was optimized for a SINGLE operating point
+  (TSR = 2.0). It does NOT beat the fixed-pitch baseline at every
+  TSR in the sweep -- a passive mechanism tuned for one design point can
+  give up performance elsewhere. A multi-point (or TSR-range-weighted)
+  objective function is a natural next step if broad-TSR performance
+  matters more than peak performance at a single design condition.
+
+NEXT STEPS (toward the full project scope)
+-------------------------------------------
+  1. Replace the single-streamtube momentum closure with a full
+     Double-Multiple-Streamtube (DMST) or 2D/3D URANS CFD model to
+     capture azimuth-varying induction, dynamic stall, and blade-wake
+     interaction that this surrogate omits.
+  2. Replace the quasi-static pitch assumption with a 1-DOF torsional
+     dynamic (inertia + damping + spring + aero) time-marching model to
+     check whether the snap-through transitions are actually fast enough,
+     relative to the rotor's rotation rate, for the quasi-static
+     assumption used here to hold.
+  3. Broaden the optimization objective to a weighted average of Cp over
+     the expected operating TSR range, rather than a single design point,
+     if the deployment wind regime spans a range of tip-speed ratios.
+  4. Validate against wind-tunnel tests on 3D-printed blades at the
+     optimized (or nearby) hardware settings.

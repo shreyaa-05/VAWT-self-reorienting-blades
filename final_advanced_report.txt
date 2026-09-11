@@ -1,0 +1,59 @@
+FINAL ADVANCED VAWT RESEARCH STUDY
+===================================
+
+The final computational layer directly optimizes the passive hardware with the DMST-style model over multiple TSRs. It also computes dynamic pitch trajectories and dynamic Cp, and applies the synthetic turbulence field inside the DMST-style local-flow calculation.
+
+DMST MULTI-TSR OPTIMIZATION
+----------------------------
+Target TSRs: 1.5, 2.0, 2.5, 3.0
+Pivot location: 0.2233
+Spring number: 3.6545
+Preload: 0.063 deg
+Stops: +- 23.118 deg
+Optimization objective mean DMST Cp (search resolution): 0.24921
+The value above is the objective evaluated during the coarse-resolution optimization search.
+The selected design is independently verified below using the reported TSR sweep.
+TSR    Single-streamtube Cp    DMST-style Cp    Dynamic Cp
+1.5    0.05328                 0.11464          0.12808
+2.0    0.11399                 0.20168          0.23835
+2.5    0.19990                 0.19843          0.35120
+3.0    0.30157                 0.17184          0.39292
+Verified mean DMST Cp over the reported TSR sweep: 0.17165
+
+DYNAMIC PITCH
+--------------
+The pitch equation was time-marched with blade inertia and damping. The resulting beta(t) was then used directly to calculate lift, drag, tangential force, torque, power, and dynamic Cp.
+Pitch RMS at TSR=2: 3.5880 deg
+AoA RMS at TSR=2: 18.3965 deg
+Dynamic Cp at TSR=2: 0.23835
+Dynamic inertia and damping are representative numerical parameters, not measured hardware properties.
+
+CONTROLLED TURBULENCE / DMST
+---------------------------
+TI (%)    DMST-style Cp
+  0.0    0.20168
+  5.0    0.20344
+ 10.0    0.20451
+ 15.0    0.20571
+ 20.0    0.20844
+
+SPECTRAL SHAPE AT TI=10%
+-------------------------
+Exponent    DMST-style Cp
+    0.50    0.20341
+    1.00    0.20451
+    1.50    0.20562
+    2.00    0.20622
+
+INTERPRETATION AND LIMITATIONS
+-------------------------------
+The DMST-style model captures sector-level azimuthal induction more explicitly than the single-streamtube model, but it remains an engineering surrogate and is not validated CFD.
+The dynamic model establishes a computational comparison between instantaneous-equilibrium and time-marching pitch, but quantitative dynamic parameters require blade mass-property and damping measurements.
+The turbulence field is a reproducible synthetic surrogate. It is useful for controlled hypothesis testing but does not reproduce all atmospheric turbulence physics and must be validated against measured spectra.
+
+VALIDATION PATH
+---------------
+1. Validate DMST predictions against 2D/3D URANS or LES.
+2. Identify inertia and damping experimentally.
+3. Replace synthetic turbulence with measured wind-tunnel spectra.
+4. Validate Cp and loads using the planned 3D-printed blade wind-tunnel tests.
