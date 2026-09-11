@@ -87,7 +87,32 @@ Install the required Python packages:
 
 ```bash
 py -m pip install -r requirements.txt
-Run the baseline study:
 
-```bash
-py main.py
+---
+
+## Final TSR Verification
+
+The final passive blade configuration was evaluated at four target
+tip-speed ratios using three aerodynamic approaches:
+
+- single-streamtube quasi-static model;
+- DMST-style quasi-static model; and
+- dynamic pitch model.
+
+| TSR | Single-streamtube Cp | DMST-style Cp | Dynamic Cp |
+|---:|---:|---:|---:|
+| 1.5 | 0.05328 | 0.11464 | 0.12808 |
+| 2.0 | 0.11399 | 0.20168 | 0.23835 |
+| 2.5 | 0.19990 | 0.19843 | 0.35120 |
+| 3.0 | 0.30157 | 0.17184 | 0.39292 |
+
+**Verified mean DMST Cp over the reported TSR sweep: 0.17165**
+
+---
+
+## Final Terminal Output
+
+The final computational study completed successfully, including the
+DMST-based multi-TSR optimization and final TSR verification.
+
+![Final TSR verification output](final_tsr_output.jpeg)
