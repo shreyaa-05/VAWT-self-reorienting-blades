@@ -87,3 +87,7 @@ Install the required Python packages:
 
 ```bash
 py -m pip install -r requirements.txt
+Run the baseline study:
+
+```bash
+py main.py
