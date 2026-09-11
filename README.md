@@ -117,7 +117,9 @@ optimization objective.
 The final computational study completed successfully, including the
 DMST-based multi-TSR optimization and final TSR verification.
 
-![Final TSR verification output](https://raw.githubusercontent.com/shreyaa-05/VAWT-self-reorienting-blades/main/final_tsr_output.jpeg)
+<p align="center">
+  <img src="final_tsr_output.jpeg" alt="Final TSR verification output" width="900">
+</p>
 ## Final Results and Figures
 
 ### Final Model Comparison
