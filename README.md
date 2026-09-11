@@ -87,3 +87,66 @@ Install the required Python packages:
 
 ```bash
 py -m pip install numpy scipy matplotlib
+
+---
+
+## Final TSR Verification
+
+The final passive blade configuration was evaluated at four target
+tip-speed ratios using three aerodynamic approaches:
+
+- single-streamtube quasi-static model;
+- DMST-style quasi-static model; and
+- dynamic pitch model.
+
+| TSR | Single-streamtube Cp | DMST-style Cp | Dynamic Cp |
+|---:|---:|---:|---:|
+| 1.5 | 0.05328 | 0.11464 | 0.12808 |
+| 2.0 | 0.11399 | 0.20168 | 0.23835 |
+| 2.5 | 0.19990 | 0.19843 | 0.35120 |
+| 3.0 | 0.30157 | 0.17184 | 0.39292 |
+
+**Verified mean DMST Cp over the reported TSR sweep: 0.17165**
+
+The verified TSR-sweep average is the value used when discussing the
+final reported DMST performance. It is distinct from the lower-resolution
+optimization objective.
+
+## Final Terminal Output
+
+The final computational study completed successfully, including the
+DMST-based multi-TSR optimization and final TSR verification.
+
+![Final TSR verification output](final_tsr_output.jpeg)
+
+## Final Results and Figures
+
+### Final Model Comparison
+
+![Final model comparison](model_comparison_final.png)
+
+### Dynamic Pitch Response
+
+![Dynamic pitch response](dynamic_pitch_response_final.png)
+
+### DMST Turbulence Response
+
+![DMST turbulence response](dmst_turbulence_response_final.png)
+
+### DMST Turbulence Spectral Response
+
+![DMST turbulence spectrum](dmst_turbulence_spectrum_final.png)
+
+### Final Design Comparison
+
+![Final design comparison](final_design_comparison.png)
+
+---
+
+## Reproducibility
+
+The final study can be reproduced locally using:
+
+```bash
+py -m pip install -r requirements.txt
+py advanced_study.py
