@@ -43,30 +43,21 @@ The optimized configuration is evaluated using the single-streamtube, DMST-style
 
 ## Algorithms Used
 
-- **Single-streamtube momentum model** — estimates blade forces, torque, and power coefficient from the local aerodynamic conditions.
-- **DMST-style algorithm** — evaluates upstream and downstream rotor passages separately to capture the variation in blade loading around the rotor.
-- **Dynamic pitch integration** — solves the blade pitch response using aerodynamic torque, inertia, damping, and restoring torque.
-- **Numerical induction solver** — determines the induction state required by the momentum-based aerodynamic model.
-- **Multi-TSR optimization** — searches the passive mechanism parameters across multiple target tip-speed ratios to identify a robust blade configuration.
-- **Airfoil polar interpolation** — obtains lift and drag coefficients for the required angles of attack from the airfoil aerodynamic data.
-- **Controlled turbulence perturbation** — introduces prescribed flow variations to evaluate the response of the passive pitch mechanism.
+- **Single-streamtube momentum model** — estimates blade loading, torque, and power coefficient from local aerodynamic conditions.
+- **DMST-style algorithm** — evaluates the upstream and downstream rotor passages separately to account for their different aerodynamic conditions.
+- **Dynamic pitch integration** — computes the time-dependent blade pitch response using aerodynamic torque, inertia, damping, and restoring torque.
+- **Numerical root solving** — solves the induction closure required by the momentum-based aerodynamic model.
+- **Multi-TSR optimization** — searches for suitable pivot location, spring stiffness, and pitch limits across multiple target TSRs.
+- **Airfoil polar interpolation** — obtains lift and drag coefficients for the required operating conditions.
+- **Controlled turbulence perturbation** — evaluates the passive pitch response under prescribed variations in the incoming flow.
 
 ## Implementation / Model Details
 
-The computational framework is implemented in Python using numerical and scientific-computing libraries.
+- The computational framework is implemented in Python and organized as a modular aerodynamic and dynamic simulation workflow.
+- The airfoil model provides lift and drag data to the aerodynamic models. The single-streamtube model forms the baseline performance calculation, which is extended using the DMST-style treatment of upstream and downstream rotor passages. The dynamic pitch model then couples aerodynamic torque with blade inertia, damping, and restoring effects to determine the passive pitch response.
+- The optimization stage varies the mechanical parameters of the passive mechanism, including pivot location, spring stiffness, and pitch limits, and evaluates their performance across multiple TSR conditions. Controlled turbulence perturbations are subsequently used to assess the response of the optimized configuration.
 
-The main components of the model are:
-
-- **Airfoil model:** Provides aerodynamic coefficients used for blade force calculations.
-- **Pitch model:** Defines the passive blade pitch behavior and mechanical restoring characteristics.
-- **Single-streamtube model:** Provides the baseline aerodynamic performance prediction.
-- **DMST-style model:** Separates the rotor into upstream and downstream aerodynamic passages and evaluates their contributions to turbine performance.
-- **Dynamic pitch model:** Incorporates blade inertia, damping, and restoring torque to determine the time-dependent blade pitch response.
-- **Turbulence model:** Applies controlled flow perturbations to investigate the robustness of the passive response.
-- **Optimization routine:** Searches for suitable mechanical parameters across multiple TSR conditions.
-- **Advanced study:** Combines the aerodynamic, dynamic, turbulence, and optimization components for the final evaluation.
-
-The final workflow therefore connects airfoil aerodynamics → rotor aerodynamic modeling → passive pitch dynamics → turbulence response → multi-TSR optimization → final verification.
+The final workflow therefore combines **airfoil aerodynamics, momentum-based rotor modeling, DMST-style analysis, dynamic pitch simulation, turbulence response, and multi-TSR optimization**.
 
 
 ## Final TSR Verification
