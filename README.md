@@ -12,12 +12,19 @@ The project focuses on computational modeling and design optimization. The resul
 ## Key Concepts
 **Vertical Axis Wind Turbine (VAWT):** A wind turbine in which the rotor axis is perpendicular to the incoming wind.
 Self-reorienting blade: A blade whose pitch changes passively in response to aerodynamic loading rather than through an actively controlled actuator.
+
 **Tip-Speed Ratio (TSR):** The ratio between the blade's tangential velocity and the incoming wind velocity.
+
 **Power Coefficient (Cp):** A dimensionless measure of the fraction of available wind power extracted by the turbine.
+
 **Single-streamtube model:** A baseline quasi-static aerodynamic model used to estimate blade forces and turbine performance.
+
 **DMST-style model:** A double-multiple-streamtube-style approach that represents the different aerodynamic conditions experienced by the rotor during its upstream and downstream passages.
+
 **Dynamic pitch:** A model in which blade pitch evolves according to aerodynamic torque together with inertia, damping, and restoring effects.
+
 **Passive optimization:** Optimization of mechanical parameters such as pivot location, spring stiffness, and pitch limits without relying on active pitch control.
+
 **Turbulence surrogate:** Controlled perturbations introduced into the computational model to investigate the response of the passive blade system to changing flow conditions.
 
 
@@ -53,12 +60,19 @@ The computational framework is implemented in Python using numerical and scienti
 The main components of the model are:
 
 **Airfoil model:** Provides aerodynamic coefficients used for blade force calculations.
+
 **Pitch model:** Defines the passive blade pitch behavior and mechanical restoring characteristics.
+
 **Single-streamtube model:** Provides the baseline aerodynamic performance prediction.
+
 **DMST-style model:** Separates the rotor into upstream and downstream aerodynamic passages and evaluates their contributions to turbine performance.
+
 **Dynamic pitch model:** Incorporates blade inertia, damping, and restoring torque to determine the time-dependent blade pitch response.
+
 **Turbulence model:** Applies controlled flow perturbations to investigate the robustness of the passive response.
+
 **Optimization routine:** Searches for suitable mechanical parameters across multiple TSR conditions.
+
 **Advanced study:** Combines the aerodynamic, dynamic, turbulence, and optimization components for the final evaluation.
 
 The final workflow therefore connects airfoil aerodynamics → rotor aerodynamic modeling → passive pitch dynamics → turbulence response → multi-TSR optimization → final verification.
