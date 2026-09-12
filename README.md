@@ -120,6 +120,8 @@ tip-speed ratios using three aerodynamic approaches:
 The final computational study completed successfully, including the
 DMST-based multi-TSR optimization and final TSR verification.
 
+---
+
 ___________________________________________________________________________________________________________________
 
 
