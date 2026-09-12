@@ -1,84 +1,68 @@
 
 # Self-Reorienting Blades for VAWTs — Numerical Design Model
 
-A Python simulation and optimization toolkit for the passive, motor-free
-"self-reorienting blade" concept for vertical-axis wind turbines (VAWTs).
+This project investigates a passive self-reorienting blade concept for Vertical Axis Wind Turbines (VAWTs). The objective is to develop a computational model in which blade pitch changes naturally in response to aerodynamic loading, reducing the need for active pitch-control mechanisms.
 
-The blade is pivoted off its aerodynamic center, restrained by a torsional
-spring and mechanical stops, and its pitch angle is determined by the balance
-between aerodynamic and spring torques as the rotor rotates — without an
-active pitch motor.
+The study progressively develops the aerodynamic and dynamic models from a baseline single-streamtube formulation to a DMST-style aerodynamic model, followed by a dynamic pitch model incorporating blade inertia, damping, and restoring effects. The final design is evaluated across multiple tip-speed ratios (TSRs) and under controlled turbulence perturbations.
+
+The project focuses on computational modeling and design optimization. The results provide a basis for further validation using CFD simulations, wind-tunnel experiments, and experimental identification of mechanical parameters.
 
 ---
 
-## What this is (and isn't)
+## Key Concepts
+**Vertical Axis Wind Turbine (VAWT):** A wind turbine in which the rotor axis is perpendicular to the incoming wind.
+Self-reorienting blade: A blade whose pitch changes passively in response to aerodynamic loading rather than through an actively controlled actuator.
+**Tip-Speed Ratio (TSR):** The ratio between the blade's tangential velocity and the incoming wind velocity.
+**Power Coefficient (Cp):** A dimensionless measure of the fraction of available wind power extracted by the turbine.
+**Single-streamtube model:** A baseline quasi-static aerodynamic model used to estimate blade forces and turbine performance.
+**DMST-style model:** A double-multiple-streamtube-style approach that represents the different aerodynamic conditions experienced by the rotor during its upstream and downstream passages.
+**Dynamic pitch:** A model in which blade pitch evolves according to aerodynamic torque together with inertia, damping, and restoring effects.
+**Passive optimization:** Optimization of mechanical parameters such as pivot location, spring stiffness, and pitch limits without relying on active pitch control.
+**Turbulence surrogate:** Controlled perturbations introduced into the computational model to investigate the response of the passive blade system to changing flow conditions.
 
-This project is a fast engineering-level surrogate model, not a CFD solver.
 
-The baseline model uses single-streamtube momentum theory together with a
-2D airfoil polar using Viterna–Corrigan post-stall extrapolation. This makes
-large design-space studies and optimization practical on a laptop.
+## Methodology
 
-The model is intended to provide an initial computational design and
-hypothesis-testing stage before higher-fidelity CFD simulations and
-wind-tunnel testing.
+The project follows a progressive computational modeling and optimization workflow:
 
-The project progressively extends the baseline model through:
+**Airfoil characterization**
+Aerodynamic lift and drag behavior is represented through an airfoil polar over the required angle-of-attack range.
 
-- passive self-reorienting blade pitch;
-- single-streamtube rotor aerodynamics;
-- single-point optimization;
-- controlled synthetic turbulence studies;
-- DMST-style aerodynamic modeling;
-- dynamic pitch simulation;
-- multi-TSR optimization; and
-- model-to-model comparison.
+**Baseline aerodynamic model**
+A single-streamtube quasi-static model is developed to calculate blade forces, torque, and power coefficient.
 
-CFD, URANS/LES simulations, experimental identification of blade inertia and
-damping, and wind-tunnel testing remain future validation stages.
+**DMST-style aerodynamic extension**
+The baseline model is extended using separate upstream and downstream streamtube treatment to better represent the changing aerodynamic conditions around the rotor.
 
----
+**Dynamic pitch modeling**
+Blade pitch is modeled dynamically using aerodynamic torque together with blade inertia, damping, and restoring effects.
 
-## Files
+**Turbulence response analysis**
+Controlled turbulence perturbations are introduced to study the stability and response of the passive pitch mechanism.
 
-| File | Purpose |
-|---|---|
-| `airfoil.py` | 2D airfoil polar model with linear pre-stall behavior and Viterna–Corrigan post-stall extrapolation. |
-| `pitch_model.py` | Core passive blade pitch model. Solves the blade pitch angle from aerodynamic torque and torsional spring torque, including stability and history-aware behavior. |
-| `rotor_model.py` | Couples the passive pitch model with single-streamtube momentum theory to calculate rotor performance such as Cp, thrust, and torque. |
-| `optimize.py` | Optimizes pivot location, spring stiffness, preload, and mechanical-stop angle using differential evolution. |
-| `main.py` | Runs the baseline workflow including optimization, TSR sweep, turbulence study, plots, and summary report generation. |
-| `turbulence_model.py` | Generates a reproducible synthetic turbulence field with controllable intensity and spectral shape. |
-| `dmst.py` | Engineering-level Double-Multiple-Streamtube (DMST-style) aerodynamic extension with separate upstream and downstream induction factors. |
-| `dynamic_pitch.py` | Time-marching 1-DOF dynamic pitch model including inertia, damping, spring torque, aerodynamic torque, and mechanical stops. |
-| `advanced_study.py` | Runs the final integrated study including multi-TSR optimization, dynamic pitch, turbulence response, and model comparison. |
-| `requirements.txt` | Python package requirements. |
-| `summary_report.txt` | Baseline computational summary. |
-| `final_advanced_report.txt` | Final integrated research report. |
+**Multi-TSR optimization**
+Mechanical parameters including pivot location, spring stiffness, and pitch limits are optimized across multiple target TSRs.
 
----
+**Final verification**
+The optimized configuration is evaluated using the single-streamtube, DMST-style, and dynamic models, and the resulting performance is compared.
 
-## Turbulence / renewable-energy extension
+## Implementation / Model Details
 
-The project also connects to the research theme:
+The computational framework is implemented in Python using numerical and scientific-computing libraries.
 
-**"Exploiting Turbulence for Furthering Engineering."**
+The main components of the model are:
 
-`turbulence_model.py` generates a controlled and reproducible synthetic
-longitudinal turbulence field using correlated Fourier modes.
+**Airfoil model:** Provides aerodynamic coefficients used for blade force calculations.
+**Pitch model:** Defines the passive blade pitch behavior and mechanical restoring characteristics.
+**Single-streamtube model:** Provides the baseline aerodynamic performance prediction.
+**DMST-style model:** Separates the rotor into upstream and downstream aerodynamic passages and evaluates their contributions to turbine performance.
+**Dynamic pitch model:** Incorporates blade inertia, damping, and restoring torque to determine the time-dependent blade pitch response.
+**Turbulence model:** Applies controlled flow perturbations to investigate the robustness of the passive response.
+**Optimization routine:** Searches for suitable mechanical parameters across multiple TSR conditions.
+**Advanced study:** Combines the aerodynamic, dynamic, turbulence, and optimization components for the final evaluation.
 
-The turbulence framework allows the study to:
+The final workflow therefore connects airfoil aerodynamics → rotor aerodynamic modeling → passive pitch dynamics → turbulence response → multi-TSR optimization → final verification.
 
-- vary turbulence intensity and examine its effect on energy conversion;
-- compare the self-reorienting rotor response under different turbulence
-  conditions;
-- vary the turbulence spectral exponent at fixed RMS intensity; and
-- investigate whether the distribution of turbulent energy across scales
-  influences predicted VAWT performance.
-
-The turbulence model is intentionally a controlled engineering surrogate.
-It is not intended to reproduce the full physics of atmospheric turbulence or
-replace measured wind data, LES, or RANS simulations.
 
 ## Final TSR Verification
 
@@ -99,3 +83,18 @@ DMST-based multi-TSR optimization and final TSR verification.
 <img width="696" height="489" alt="WhatsApp Image 2026-09-12 at 10 50 33 PM" src="https://github.com/user-attachments/assets/93d0dd23-2ab9-4138-b851-efa620c63047" />
 
 ---
+
+## Limitations / Future Work
+-The aerodynamic predictions are based on reduced-order models rather than full CFD.
+-The turbulence treatment is a controlled computational surrogate rather than measured atmospheric turbulence.
+-Blade inertia, damping, and other mechanical parameters require experimental identification for physical implementation.
+-Three-dimensional effects, dynamic stall, wake interaction, and detailed viscous flow behavior are not fully captured.
+-The passive mechanism requires experimental validation to determine whether the predicted pitch response is achievable in a physical rotor.
+
+## Future Work
+-CFD validation using higher-fidelity URANS/LES simulations.
+-Wind-tunnel testing of the optimized passive blade configuration.
+-Experimental identification of inertia and damping parameters.
+-Comparison between computational and experimental power curves.
+-Further optimization of the passive mechanism under realistic turbulent inflow conditions.
+
