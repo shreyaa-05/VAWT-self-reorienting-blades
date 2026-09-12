@@ -1,4 +1,3 @@
-<img width="728" height="468" alt="final_tsr_output" src="https://github.com/user-attachments/assets/2ed1ec3c-a738-4b47-8f7d-510abda9757d" />
 
 # Self-Reorienting Blades for VAWTs — Numerical Design Model
 
@@ -81,6 +80,11 @@ The turbulence model is intentionally a controlled engineering surrogate.
 It is not intended to reproduce the full physics of atmospheric turbulence or
 replace measured wind data, LES, or RANS simulations.
 
+## Final Terminal Output
+
+The final computational study completed successfully, including the
+DMST-based multi-TSR optimization and final TSR verification.
+
 <img width="728" height="468" alt="final_tsr_output" src="https://github.com/user-attachments/assets/2ed1ec3c-a738-4b47-8f7d-510abda9757d" />
 
 
@@ -113,23 +117,7 @@ tip-speed ratios using three aerodynamic approaches:
 
 **Verified mean DMST Cp over the reported TSR sweep: 0.17165**
 
----
 
-## Final Terminal Output
-
-The final computational study completed successfully, including the
-DMST-based multi-TSR optimization and final TSR verification.
-
----
-
-___________________________________________________________________________________________________________________
-
-
-
-
-
-
-<img width="728" height="468" alt="final_tsr_output" src="https://github.com/user-attachments/assets/2ed1ec3c-a738-4b47-8f7d-510abda9757d" />
 
 
 
