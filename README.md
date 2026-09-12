@@ -123,15 +123,4 @@ DMST-based multi-TSR optimization and final TSR verification.
 
 
 
-![TSR Output](https://githubusercontent.com)
-
-
-
-
-
-
-
-
-
-
 
