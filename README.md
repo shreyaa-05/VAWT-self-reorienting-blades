@@ -80,39 +80,19 @@ The turbulence model is intentionally a controlled engineering surrogate.
 It is not intended to reproduce the full physics of atmospheric turbulence or
 replace measured wind data, LES, or RANS simulations.
 
-## Final Terminal Output
+## Final Terminal Output and Graphs
 
 The final computational study completed successfully, including the
 DMST-based multi-TSR optimization and final TSR verification.
 
 <img width="728" height="468" alt="final_tsr_output" src="https://github.com/user-attachments/assets/2ed1ec3c-a738-4b47-8f7d-510abda9757d" />
 
+<img width="698" height="498" alt="WhatsApp Image 2026-09-12 at 10 48 17 PM" src="https://github.com/user-attachments/assets/10a3fbbd-f8b7-4127-a716-c85569fc65b3" />
+
+<img width="704" height="502" alt="WhatsApp Image 2026-09-12 at 10 49 23 PM" src="https://github.com/user-attachments/assets/f4bcc8b3-74ee-4a01-966e-7e4db8fe9885" />
+
+<img width="703" height="495" alt="WhatsApp Image 2026-09-12 at 10 49 58 PM" src="https://github.com/user-attachments/assets/38cec65e-d179-4a98-8b6d-bd213d6e26bb" />
+
+<img width="696" height="489" alt="WhatsApp Image 2026-09-12 at 10 50 33 PM" src="https://github.com/user-attachments/assets/93d0dd23-2ab9-4138-b851-efa620c63047" />
 
 ---
-
-## Running the baseline model
-
-Install the required Python packages:
-
-```bash
-py -m pip install -r requirements.txt
-
----
-
-## Final TSR Verification
-
-The final passive blade configuration was evaluated at four target
-tip-speed ratios using three aerodynamic approaches:
-
-- single-streamtube quasi-static model;
-- DMST-style quasi-static model; and
-- dynamic pitch model.
-
-| TSR | Single-streamtube Cp | DMST-style Cp | Dynamic Cp |
-|---:|---:|---:|---:|
-| 1.5 | 0.05328 | 0.11464 | 0.12808 |
-| 2.0 | 0.11399 | 0.20168 | 0.23835 |
-| 2.5 | 0.19990 | 0.19843 | 0.35120 |
-| 3.0 | 0.30157 | 0.17184 | 0.39292 |
-
-**Verified mean DMST Cp over the reported TSR sweep: 0.17165**
