@@ -116,3 +116,6 @@ The final computational study completed successfully, including the
 DMST-based multi-TSR optimization and final TSR verification.
 
 ![Final TSR verification output](final_tsr_output.jpeg)
+
+<img width="1088" height="703" alt="image" src="https://github.com/user-attachments/assets/e4b8354c-11d4-4339-a7e8-7084954a3a0a" />
+
