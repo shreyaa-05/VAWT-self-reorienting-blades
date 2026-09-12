@@ -80,12 +80,8 @@ DMST-based multi-TSR optimization and final TSR verification.
 
 ---
 
-## Limitations / Future Work
-- The aerodynamic predictions are based on reduced-order models rather than full CFD.
-- The turbulence treatment is a controlled computational surrogate rather than measured atmospheric turbulence.
-- Blade inertia, damping, and other mechanical parameters require experimental identification for physical implementation.
-- Three-dimensional effects, dynamic stall, wake interaction, and detailed viscous flow behavior are not fully captured.
-- The passive mechanism requires experimental validation to determine whether the predicted pitch response is achievable in a physical rotor.
+## Limitations 
+The study relies on reduced-order aerodynamic models and simplified turbulence representations, so complex three-dimensional flow effects, dynamic stall, wake interactions, and detailed mechanical behavior are not fully captured. Experimental validation is also required to confirm the predicted passive blade response and performance under realistic operating conditions.
 
 ## Future Work
 - CFD validation using higher-fidelity URANS/LES simulations.
