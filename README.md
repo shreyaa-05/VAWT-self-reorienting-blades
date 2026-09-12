@@ -1,3 +1,4 @@
+<img width="728" height="468" alt="final_tsr_output" src="https://github.com/user-attachments/assets/2ed1ec3c-a738-4b47-8f7d-510abda9757d" />
 
 # Self-Reorienting Blades for VAWTs — Numerical Design Model
 
