@@ -53,6 +53,16 @@ Mechanical parameters including pivot location, spring stiffness, and pitch limi
 - **Final verification**
 The optimized configuration is evaluated using the single-streamtube, DMST-style, and dynamic models, and the resulting performance is compared.
 
+## Algorithms Used
+
+- **Single-streamtube momentum model** — estimates blade forces, torque, and power coefficient from the local aerodynamic conditions.
+- **DMST-style algorithm** — evaluates upstream and downstream rotor passages separately to capture the variation in blade loading around the rotor.
+- **Dynamic pitch integration** — solves the blade pitch response using aerodynamic torque, inertia, damping, and restoring torque.
+- **Numerical induction solver** — determines the induction state required by the momentum-based aerodynamic model.
+- **Multi-TSR optimization** — searches the passive mechanism parameters across multiple target tip-speed ratios to identify a robust blade configuration.
+- **Airfoil polar interpolation** — obtains lift and drag coefficients for the required angles of attack from the airfoil aerodynamic data.
+- **Controlled turbulence perturbation** — introduces prescribed flow variations to evaluate the response of the passive pitch mechanism.
+
 ## Implementation / Model Details
 
 The computational framework is implemented in Python using numerical and scientific-computing libraries.
