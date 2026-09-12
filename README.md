@@ -116,27 +116,3 @@ tip-speed ratios using three aerodynamic approaches:
 | 3.0 | 0.30157 | 0.17184 | 0.39292 |
 
 **Verified mean DMST Cp over the reported TSR sweep: 0.17165**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
