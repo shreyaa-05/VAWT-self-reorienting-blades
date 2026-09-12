@@ -117,5 +117,6 @@ DMST-based multi-TSR optimization and final TSR verification.
 
 ![Final TSR verification output](final_tsr_output.jpeg)
 
-<img width="1088" height="703" alt="Image" src="https://github.com/user-attachments/assets/9ccf5bc6-2f6a-4d40-9d80-b2420572de9d" />
+![App Screenshot](final_tsr_output.jpeg)
+
 
