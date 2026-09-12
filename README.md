@@ -117,6 +117,28 @@ DMST-based multi-TSR optimization and final TSR verification.
 
 ![Final TSR verification output](final_tsr_output.jpeg)
 
-![App Screenshot](https://github.com/shreyaa-05/VAWT-self-reorienting-blades/blob/main/final_tsr_output.jpeg)
+
+
+
+
+
+
+
+
+
+
+![TSR Output][(https://github.com](https://github.com/shreyaa-05/VAWT-self-reorienting-blades/blob/main/final_tsr_output.jpeg))
+
+
+
+
+
+
+
+
+
+
+
+
 
 
