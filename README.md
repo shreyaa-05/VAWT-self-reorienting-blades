@@ -121,8 +121,6 @@ DMST-based multi-TSR optimization and final TSR verification.
 
 
 
-<img width="728" height="468" alt="Image" src="https://github.com/user-attachments/assets/215ed2ca-1ea6-4b6e-9354-9bfc1415eea5" />
-
 
 
 
